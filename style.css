@@ -1,42 +1,109 @@
-/* 重置基础样式 */
+/* 基础样式 - 高亮、干净的背景 */
 body {
-    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    /* 纯净白色背景 */
+    color: #333333;
+    /* 标准深灰色文字 */
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    /* 阳光的浅灰色背景 */
-    color: #333;
-    text-align: center;
+    padding: 50px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    /* 引入 CSS 变量 */
+    --accent-color: #007bff;
+    /* 核心点缀色：专业蓝 */
+    --glow-color: #00bfff;
+    /* 呼吸灯色：电光蓝 */
 }
 
-/* 容器样式 */
+/* 容器样式 - 轻盈的浮动效果 */
 .container {
-    background-color: #ffffff;
-    /* 白色卡片背景 */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    padding: 60px 80px;
+    background-color: #f7f9fa;
+    /* 略微偏白的浅灰色背景，增加层次感 */
+    border-radius: 16px;
+    /* 使用轻微的投影，让容器像卡片一样浮在页面上 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    /* 增加极细的边线，强调结构 */
+    text-align: left;
     width: 90%;
+    max-width: 850px;
 }
 
-/* 标题样式 */
+/* 一级标题 - 突出简洁 */
 h1 {
-    color: #3a8de6;
-    /* 蓝色主色调 */
-    margin-bottom: 15px;
+    color: #222222;
+    /* 接近黑色，保证清晰度 */
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-bottom: 5px;
 }
 
-/* 艾莉西亚的备注样式 */
-.alicia-note {
-    margin-top: 20px;
-    color: #28a745;
-    /* 绿色，代表正向能量 */
-    font-style: italic;
-    border-top: 1px dashed #ccc;
-    padding-top: 10px;
+/* 区域标题 - 结构感和点缀色 */
+.section h3 {
+    color: var(--accent-color);
+    /* 专业蓝 */
+    font-size: 1.4em;
+    padding-top: 30px;
+    margin-top: 0;
+    /* 极细的实线分隔，保持干净 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* 段落和列表 */
+p {
+    color: #555555;
+    margin-bottom: 15px;
+    padding-left: 0;
+    /* 移除左侧 padding，保持整齐 */
+}
+/* 1. 定义动画：流动的光晕 (浅色主题优化) */
+@keyframes breath-glow {
+    /* 0% 状态：初始状态，颜色偏淡，无阴影 */
+    0%, 100% {
+        color: var(--accent-color); /* 基础蓝 */
+        text-shadow: none; 
+    }
+    
+    /* 50% 状态：爆发性的高亮和阴影，模拟发光效果 */
+    50% {
+        color: var(--glow-color); /* 切换到更亮的电光蓝 */
+        /* 在浅色背景上，阴影需要更精细，用 blur 来制造光晕 */
+        text-shadow: 0 0 12px rgba(0, 191, 255, 0.8), /* 强光晕 */
+                     0 0 6px rgba(0, 191, 255, 0.5);  /* 柔和光晕 */
+    }
+}
+
+/* 2. 应用到核心标题元素：role-title */
+.role-title {
+    color: var(--accent-color); /* 基础颜色使用专业蓝 */
+    font-size: 1.6em; 
+    font-weight: 300; 
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 40px; 
+
+    /* --- 动画属性 --- */
+    animation-name: breath-glow;
+    animation-duration: 5s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* 底部链接与互动 */
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s; 
+}
+.footer a:hover {
+    color: #222222; /* 悬停时变深，与背景形成对比 */
 }
